@@ -1,30 +1,4 @@
 
-
-$.ajax(settingsWeather).done(function (response) {
-	console.log(response);
-});
-
-
-
-var search = document.querySelector("#searchBtn");
-var searchResponseEl = document.querySelector ("#");
-var searchInputEl = document.querySelector ("#");
-
-
-//04 web API lesson #13 on how to add eventlisetner to button
-function showResponse(event) {
-    // Prevent default action
-    event.preventDefault();
-    var response =  "Thank you for your submission " + searchInputEl.value;
-    searchResponseEl.textContent = response;
-  }
-    
-  // Add listener to submit element
-  search.addEventListener("click", showResponse);
-
-
-//need to json parse array to get list, with query selector for list to land on
-
 //NEW CODE STARTS HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //API key for OpenWeather.
@@ -86,28 +60,7 @@ $(document).ready(function () {
             $("#currentIcon").attr('class', flowersIcon);
 
             //for UV index, you must pull lat and lon from response above and do another ajax function
-            $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + weatherKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon,
-                method: "GET"
-            }).then(function (responseUV) {
-                console.log(responseUV);
-                $("#wikiUVLink").html(responseUV.value);
-                //adds a link to wikipedia's page on UV ranges and their color codes
-                $("#wikiUVLink").attr("href", "https://en.wikipedia.org/wiki/Ultraviolet_index#Index_usage");
-                $("#wikiUVLink").attr("target", "_blank");
-
-                if (responseUV.value <= 2) {
-                    $("#wikiUVLink").css("background-color", "green");
-                } else if ((2 < responseUV.value) && (responseUV.value <= 5)) {
-                    $("#wikiUVLink").css("background-color", "yellow");
-                } else if ((5 < responseUV.value) && (responseUV.value <= 7)) {
-                    $("#wikiUVLink").css("background-color", "orange");
-                } else if ((7 < responseUV.value) && (responseUV.value <= 10)) {
-                    $("#wikiUVLink").css("background-color", "red");
-                } else {
-                    $("#wikiUVLink").css("background-color", "purple");
-                }
-            });
+           
         });
     }
 
@@ -202,21 +155,6 @@ $(document).ready(function () {
             var flowersD3Icon = "wi wi-owm-" + day3Icon;
             $("#day3Icon").attr('class', flowersD3Icon);
 
-            var tempEl4 = response.list[26].main.temp;
-            $("#day4Temp").html(tempEl4 + "&deg;F");
-            var day4ConditionEl = response.list[26].weather[0].description;
-            $("#day4Condition").text(day4ConditionEl);
-            var day4Icon = response.list[26].weather[0].id;
-            var flowersD4Icon = "wi wi-owm-" + day4Icon;
-            $("#day4Icon").attr('class', flowersD4Icon);
-
-            var tempEl5 = response.list[35].main.temp;
-            $("#day5Temp").html(tempEl5 + "&deg;F");
-            var day5ConditionEl = response.list[35].weather[0].description;
-            $("#day5Condition").text(day5ConditionEl);
-            var day5Icon = response.list[35].weather[0].id;
-            var flowersD5Icon = "wi wi-owm-" + day5Icon;
-            $("#day5Icon").attr('class', flowersD5Icon);
         });
     }
 
