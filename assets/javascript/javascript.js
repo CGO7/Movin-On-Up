@@ -167,28 +167,6 @@ $(document).ready(function () {
             $("#currentIcon").attr('class', flowersIcon);
 
             //for UV index, you must pull lat and lon from response above and do another ajax function
-            $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + weatherKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon,
-                method: "GET"
-            }).then(function (responseUV) {
-                console.log(responseUV);
-                $("#wikiUVLink").html(responseUV.value);
-                //adds a link to wikipedia's page on UV ranges and their color codes
-                $("#wikiUVLink").attr("href", "https://en.wikipedia.org/wiki/Ultraviolet_index#Index_usage");
-                $("#wikiUVLink").attr("target", "_blank");
-
-                if (responseUV.value <= 2) {
-                    $("#wikiUVLink").css("background-color", "green");
-                } else if ((2 < responseUV.value) && (responseUV.value <= 5)) {
-                    $("#wikiUVLink").css("background-color", "yellow");
-                } else if ((5 < responseUV.value) && (responseUV.value <= 7)) {
-                    $("#wikiUVLink").css("background-color", "orange");
-                } else if ((7 < responseUV.value) && (responseUV.value <= 10)) {
-                    $("#wikiUVLink").css("background-color", "red");
-                } else {
-                    $("#wikiUVLink").css("background-color", "purple");
-                }
-            });
         });
     }
 
