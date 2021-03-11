@@ -1,4 +1,3 @@
-
 const settings = {
 	"async": true,
 	"crossDomain": true,
@@ -14,16 +13,16 @@ $.ajax(settings).done(function (response) {
 	console.log(response);
 });
 
-const settingsWeather = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://us-weather-by-city.p.rapidapi.com/getweather?city=San%20Francisco&state=CA",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "cc3bdfe5d0mshc16b581a0701a7ep103683jsn6aabd3b9dcb2",
-		"x-rapidapi-host": "us-weather-by-city.p.rapidapi.com"
-	}
-};
+// const settingsWeather = {
+// 	"async": true,
+// 	"crossDomain": true,
+// 	"url": "https://us-weather-by-city.p.rapidapi.com/getweather?city=San%20Francisco&state=CA",
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-key": "cc3bdfe5d0mshc16b581a0701a7ep103683jsn6aabd3b9dcb2",
+// 		"x-rapidapi-host": "us-weather-by-city.p.rapidapi.com"
+// 	}
+// };
 
 $.ajax(settingsWeather).done(function (response) {
 	console.log(response);
@@ -31,10 +30,24 @@ $.ajax(settingsWeather).done(function (response) {
 
 
 
+var search = document.querySelector("#searchBtn");
+var searchResponseEl = document.querySelector ("#");
+var searchInputEl = document.querySelector ("#");
 
-//need event listener to search button to trigger API codes
+
+//04 web API lesson #13 on how to add eventlisetner to button
+function showResponse(event) {
+    // Prevent default action
+    event.preventDefault();
+    var response =  "Thank you for your submission " + searchInputEl.value;
+    searchResponseEl.textContent = response;
+  }
+    
+  // Add listener to submit element
+  search.addEventListener("click", showResponse);
+
 
 //need to json parse array to get list, with query selector for list to land on
 
-//
+
 
