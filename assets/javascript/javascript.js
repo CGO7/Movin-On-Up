@@ -1,43 +1,4 @@
 
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "cc3bdfe5d0mshc16b581a0701a7ep103683jsn6aabd3b9dcb2",
-		"x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
-	}
-};
-
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
-
-const settingsWeather = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://us-weather-by-city.p.rapidapi.com/getweather?city=San%20Francisco&state=CA",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "cc3bdfe5d0mshc16b581a0701a7ep103683jsn6aabd3b9dcb2",
-		"x-rapidapi-host": "us-weather-by-city.p.rapidapi.com"
-	}
-};
-
-$.ajax(settingsWeather).done(function (response) {
-	console.log(response);
-});
-
-
-
-
-//need event listener to search button to trigger API codes
-
-//need to json parse array to get list, with query selector for list to land on
-
-//NEW CODE STARTS HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 //API key for OpenWeather.
 var weatherKey = 'd9370cf81c44dc3900380fcc44da127d';
 
@@ -97,30 +58,30 @@ $(document).ready(function () {
             $("#currentIcon").attr('class', flowersIcon);
 
             //for UV index, you must pull lat and lon from response above and do another ajax function
-            $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + weatherKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon,
-                method: "GET"
-            }).then(function (responseUV) {
-                console.log(responseUV);
-                $("#wikiUVLink").html(responseUV.value);
-                //adds a link to wikipedia's page on UV ranges and their color codes
-                $("#wikiUVLink").attr("href", "https://en.wikipedia.org/wiki/Ultraviolet_index#Index_usage");
-                $("#wikiUVLink").attr("target", "_blank");
+    //         $.ajax({
+    //             url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + weatherKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon,
+    //             method: "GET"
+    //         }).then(function (responseUV) {
+    //             console.log(responseUV);
+    //             $("#wikiUVLink").html(responseUV.value);
+    //             //adds a link to wikipedia's page on UV ranges and their color codes
+    //             $("#wikiUVLink").attr("href", "https://en.wikipedia.org/wiki/Ultraviolet_index#Index_usage");
+    //             $("#wikiUVLink").attr("target", "_blank");
 
-                if (responseUV.value <= 2) {
-                    $("#wikiUVLink").css("background-color", "green");
-                } else if ((2 < responseUV.value) && (responseUV.value <= 5)) {
-                    $("#wikiUVLink").css("background-color", "yellow");
-                } else if ((5 < responseUV.value) && (responseUV.value <= 7)) {
-                    $("#wikiUVLink").css("background-color", "orange");
-                } else if ((7 < responseUV.value) && (responseUV.value <= 10)) {
-                    $("#wikiUVLink").css("background-color", "red");
-                } else {
-                    $("#wikiUVLink").css("background-color", "purple");
-                }
-            });
-        });
-    }
+    //             if (responseUV.value <= 2) {
+    //                 $("#wikiUVLink").css("background-color", "green");
+    //             } else if ((2 < responseUV.value) && (responseUV.value <= 5)) {
+    //                 $("#wikiUVLink").css("background-color", "yellow");
+    //             } else if ((5 < responseUV.value) && (responseUV.value <= 7)) {
+    //                 $("#wikiUVLink").css("background-color", "orange");
+    //             } else if ((7 < responseUV.value) && (responseUV.value <= 10)) {
+    //                 $("#wikiUVLink").css("background-color", "red");
+    //             } else {
+    //                 $("#wikiUVLink").css("background-color", "purple");
+    //             }
+    //         });
+    //     });
+    // }
 
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -176,32 +137,7 @@ $(document).ready(function () {
             var iconCode = response.weather[0].id;
             var flowersIcon = "wi wi-owm-" + iconCode;
             $("#currentIcon").attr('class', flowersIcon);
-
-            //for UV index, you must pull lat and lon from response above and do another ajax function
-            $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + weatherKey + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon,
-                method: "GET"
-            }).then(function (responseUV) {
-                console.log(responseUV);
-                $("#wikiUVLink").html(responseUV.value);
-                //adds a link to wikipedia's page on UV ranges and their color codes
-                $("#wikiUVLink").attr("href", "https://en.wikipedia.org/wiki/Ultraviolet_index#Index_usage");
-                $("#wikiUVLink").attr("target", "_blank");
-
-                if (responseUV.value <= 2) {
-                    $("#wikiUVLink").css("background-color", "green");
-                } else if ((2 < responseUV.value) && (responseUV.value <= 5)) {
-                    $("#wikiUVLink").css("background-color", "yellow");
-                } else if ((5 < responseUV.value) && (responseUV.value <= 7)) {
-                    $("#wikiUVLink").css("background-color", "orange");
-                } else if ((7 < responseUV.value) && (responseUV.value <= 10)) {
-                    $("#wikiUVLink").css("background-color", "red");
-                } else {
-                    $("#wikiUVLink").css("background-color", "purple");
-                }
-            });
-        });
-    }
+			
 
     function forecast(cityName) {
         $.ajax({
