@@ -27,14 +27,14 @@ With a simple drawing this project began,
 
 ## Systems
 
-*Bulma was used as a framework for our html
-*Weather API was used to find city data 
-*IdealSpot API was used to find city info data, such as:
-    *
-    *
-    *
-    *
-    *
+* Bulma was used as a framework for our html
+* Weather API was used to find city data 
+* IdealSpot API was used to find city info data, such as:
+    * 
+    * 
+    * 
+    * 
+    * 
 
 
 ## Credits
