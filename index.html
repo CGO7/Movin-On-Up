@@ -35,18 +35,19 @@
                 <article class="tile is-child notification" id="searchBoxBg">
                     <!--Search bar and frequently searched cities-->
                     <p class="title" id="searchTitle">Search</p>
-                    <button class="fas fa-info-circle"  id="myBtn1"></button>
-                    <!-- <button id="myBtn">OPen MOdal</button> -->
-                        <!-- The Modal -->
+                    <button id="myBtn"><i class="fas fa-info-circle"></i></button>
+                    <!-- The Modal -->
                     <div id="myModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p>Type in the name of the city you are considering moving too. Click search and find out
+                                information about the city such as: .
+                                You will also be given a 2 day forecast along with current weather.
+                            </p>
+                        </div>
 
-                          <!-- Modal content -->
-                  <div class="modal-content">
-                      <span class="close">&times;</span>
-                    <p>Some text in the Modal..</p>
-              </div>
-
-        </div>
+                    </div>
                     <div id="searchBox">
                         <!--Input field for City-->
                         <div class="field is-grouped">
@@ -81,7 +82,7 @@
                     <article class="tile is-child notification" id="statBox">
                         <h4 id="cityStats"></h4>
                         <p id="dateBox"></p>
-                        <p id="temperature">Add Temperature here</p>      
+                        <p id="temperature">Add Temperature here</p>
                     </article>
 
                     <article class="tile is-child notification" id="weatherBox">
