@@ -13,7 +13,7 @@ Format: ![Alt Text](url)
 
 ## Humble beginnings
 
-![Wire Frame] (/images/Wireframe.jpeg)
+![Wire Frame] (assets/images/Wireframe.jpeg)
 
 
 
