@@ -1,7 +1,31 @@
 
 //NEW CODE STARTS HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// CODE FOR IDEALSPOT=======================================================================
+const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "9430d5a1famsh310e1f06a7f7dc3p169296jsn84179abe104e",
+		"x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
+	}
+};
 
-//API key for OpenWeather.
+function dealWithData(jsonResponse) {
+    for (var i = 0; i <jsonResponse.data.length; i++) {
+
+        
+    } 
+}
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+
+
+
+//API key for OpenWeather.===========================================================================================================================
 var weatherKey = 'd9370cf81c44dc3900380fcc44da127d';
 
 $(document).ready(function () {
