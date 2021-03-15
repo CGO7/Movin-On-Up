@@ -8,6 +8,8 @@
     <title>Document</title>
     <!--Bulma instead of Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <!--Lux theme to give an easier time with css. Makes sharp aesthetic adjustments-->
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/lux/bulmaswatch.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
     <!--weather icons-->
@@ -48,12 +50,12 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <div id="searchBox">
                         <!--Input field for City-->
                         <div class="field is-grouped">
                             <input class="input" type="text" placeholder="City" id="cityInput">
-                            
+
                             <button class="button" id="searchBtn">
                                 <span class="icon">
                                     <svg class="svg-inline--fa fa-search-location fa-w-16" aria-hidden="true"
@@ -70,8 +72,8 @@
                         <div class="field is-grouped">
                             <!-- INput field for zipcode -->
                             <input class="input" type="text" placeholder="Zipcode" id="zipInput">
-                            
-                           
+
+
                         </div>
                         <div id="frequentlySearched">
                             <button class="button is-info" id="austin">Austin</button>
@@ -92,9 +94,9 @@
                         <h4 id="cityStats"></h4>
                         <p id="dateBox"></p>
                         <!-- <p id="temperature"> -->
-                            <p id="metrics"> add temperature here
+                        <p id="metrics"> add temperature here
                             <!-- <div id="metrics"></div>Add Temperature here -->
-                            </p> 
+                        </p>
                     </article>
 
                     <article class="tile is-child notification" id="weatherBox">
@@ -146,7 +148,16 @@
             </div>
         </div>
     </div>
-
+    <!--footer for source code and website content license and credit-->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                Movin' On Up by Trilogy Students. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
