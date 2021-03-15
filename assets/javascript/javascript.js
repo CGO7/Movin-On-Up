@@ -1,15 +1,68 @@
-
 //NEW CODE STARTS HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // CODE FOR IDEALSPOT=======================================================================
+
+var zipcode = $("#zipInput")
+var regionObj = {
+    type:"region",
+    regiontype: "zipcode",
+    region_id: "78006"
+    };
+var locStr = JSON.stringify(regionObj);
+var encodedStr = encodeURIComponent(locStr);
+console.log(locStr);
+console.log(encodedStr);
+
 const settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights",
+	"url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights/residential-population/?location=78250",
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "9430d5a1famsh310e1f06a7f7dc3p169296jsn84179abe104e",
 		"x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
 	}
+};
+
+// var dummydata = { # Get `gender` meta data
+// url = "https://idealgeo.com/api/v1/data/insights/gender"
+// headers = {
+//     "accept": "application/json",
+//     "api_key": API_KEY
+// }
+
+// params = {
+//     "version": "v2",
+// }
+
+// r = requests.get(url=url, params=params, headers=headers)
+// r.json()}
+
+var data = {
+    "version": "v2",
+    "slug": "residential-population",
+    "periods": [
+        "YR2030Q1",
+        "YR2025Q1",
+        "YR2020Q1",
+        "YR2019Q4",
+        "YR2019Q3",
+        "YR2019Q2",
+        "YR2019Q1",
+        "YR2018Q4",
+        "YR2018Q3",
+        "YR2018Q2",
+        "YR2018Q1",
+        "YR2010Q1",
+        "YR2000Q1",
+        "YR1990Q1"
+    ],
+    "parameters": {},
+    "name": "Residential Population",
+    "id": "residential-population",
+    "groups": [
+        "value"
+    ],
+    "description": "Historical, current and forecasted number of people living in houses and apartments within a trade area."
 };
 
 function dealWithData(jsonResponse) {
