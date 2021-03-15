@@ -1,14 +1,31 @@
-html{
-    background-color: rgba(12, 11, 11, 0);
+* {
+    margin:0;
+    padding:0;
 }
 
+html{
+    background-color: rgba(12, 11, 11, 0);
+    height: 100%
+}
+
+/*The body is literally just to organize background image and set the footer to bottom*/
 body {
-  
-    background-color: rgb(32, 91, 131);
+    background-image: url(https://wallpaperaccess.com/full/646374.jpg);
+    background-repeat: no-repeat;
+    background-position: 0%;
+    /*Should adjust image size to any size of window viewport*/
+    background-size: 100% 100%;
+    background-color: slategray;
+    height: 100%;
+    /*The below is for the footer to stick to the bottom*/
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100vh;
 }
 
 p {
-    font-size: 26px;
+    font-size: 1.4rem;
 }
 
 #dateBox {
@@ -48,8 +65,8 @@ i {
 .button.is-info {
     border-radius: 0%;
     width: 100%;
-    color: #17BEBB;
-    background-color: #FCFFF7;
+    color: black;
+    background-color: beige;
     font-family: 'Raleway', sans-serif;
     font-size: larger;
 }
@@ -69,6 +86,7 @@ i {
 }
 
 #searchTitle {
+    color: black;
     font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
 }
@@ -78,7 +96,7 @@ i {
 }
 
 #searchBoxBg {
-    background-color: #9BC1BC;
+    background-color: #b6b6b6;
     padding: 6%;
     height: 100%;
 }
@@ -94,7 +112,8 @@ i {
 }
 
 #statBox{
-    background-color: #F4F1BB;
+    background-color: beige;
+    color: black;
     font-family: 'Raleway', sans-serif;
     font-size: 4rem;
 }
@@ -105,8 +124,8 @@ i {
 } */
 
 #weatherBox {
-    background-color: #ED6A5A;
-    color: #f1efbd;
+    background-color: #b6b6b6;
+    color: rgb(26, 26, 26);
     font-family: 'Cormorant Garamond', serif;
 }
 
@@ -131,10 +150,6 @@ h6 {
     font-family: 'Raleway', sans-serif;
 }
 
-.footer {
-    background: transparent;
-}
-
 #footerTxt {
     font-size: 2rem;
     font-family: 'Cormorant Garamond', serif;
@@ -144,7 +159,7 @@ h6 {
 a {
     font-size: 1.4rem;
     font-family: 'Cormorant Garamond', serif;
-    color: #17BEBB;
+    color: whitesmoke;
 }
 
 #wikiUV {
@@ -155,6 +170,15 @@ a {
 
 #bgCredit {
     float: right;
+}
+
+.hero {
+    background-color: black;
+}
+
+.footer {
+    background-color: black;
+    color: whitesmoke;
 }
 
 .modal {
