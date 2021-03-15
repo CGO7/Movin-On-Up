@@ -172,8 +172,8 @@ $(document).ready(function () {
                     "x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
                       }
             };
-             $.ajax(settings).done(function (response) {
-                console.log(response); 
+             $.ajax(settings).done(function (response1) {
+                console.log(response1); 
                 var zipcode = $("#zipInput").val()
                 console.log(zipcode);
                 callback();
@@ -186,9 +186,11 @@ $(document).ready(function () {
                 var encodedStr = encodeURIComponent(locStr);
                 console.log(locStr);
                 console.log(encodedStr);
-            });
+            
                 var metrics = $("#metrics")
-                metrics.html(`<p>${JSON.stringify(response)}</p>`)
+                metrics.html(`<p>${JSON.stringify(response1)}</p>`)
+
+            });
             });
 
         //    .then(searchButton.click(function () {
