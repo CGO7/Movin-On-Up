@@ -24,7 +24,7 @@ the current weather and a 2 day forecast to help plan your trip.
 With a simple drawing this project began,
 
 ![Wire Frame] (/assets/images/Wireframe.jpeg)
-![Alt Text](WireFrame)
+![Alt Text](https://github.com/CGO7/Movin-On-Up/blob/main/assets/images/Wireframe.jpeg)
 
 ## Systems
 
