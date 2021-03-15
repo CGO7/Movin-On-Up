@@ -4,11 +4,12 @@
 
 This website was designed to provide data on cities to help a potential home buyer, find information on such things as:
 
-*
-*
-*
-*
-*
+* crime
+* population
+* salary
+* household-income
+* I dont know yet
+
 
 These factors are major contributors to the decision to buy a home.  Along with these key factors, the search will also provide 
 the current weather and a 2 day forecast to help plan your trip.  
