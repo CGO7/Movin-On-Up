@@ -150,12 +150,12 @@ $(document).ready(function () {
 
            searchButton.click(function () {
                //Zipcode geodata function start
-            var data = {"units":"minutes",
-            "type":"buffer",
-            "radius":"5",
-            "longitude":crd.longitude,
-            "latitude": crd.latitude,
-            "areatype":"drivetime"}
+               var zipcode = $("#zipInput").val()
+               var data = {
+                type:"region",
+                regiontype: "zipcode",
+                region_id: zipcode
+                };
             // Plugs in the encode data function into the url to allow it to convert zipcode into lat long and plug it into url encoding accordingly.
             var stringifyData = JSON.stringify(data)
             console.log(stringifyData) 
@@ -186,11 +186,9 @@ $(document).ready(function () {
                 var encodedStr = encodeURIComponent(locStr);
                 console.log(locStr);
                 console.log(encodedStr);
-            
+            });
                 var metrics = $("#metrics")
                 metrics.html(`<p>${JSON.stringify(response1)}</p>`)
-
-            });
             });
 
         //    .then(searchButton.click(function () {
