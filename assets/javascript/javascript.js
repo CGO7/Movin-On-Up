@@ -1,16 +1,65 @@
-
 //NEW CODE STARTS HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // CODE FOR IDEALSPOT=======================================================================
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "9430d5a1famsh310e1f06a7f7dc3p169296jsn84179abe104e",
-		"x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
-	}
-};
+
+//Variable defined as user input for zipcode 
+var zipcode = $("#zipInput").val()
+console.log(zipcode)
+// {"units":"minutes","type":"buffer","radius":"5","longitude":-97.7356077,"latitude":30.264757,"areatype":"drivetime"}
+var regionObj = {
+    type:"region",
+    regiontype: "zipcode",
+    region_id: "78006"
+    };
+var locStr = JSON.stringify(regionObj);
+var encodedStr = encodeURIComponent(locStr);
+// console.log(locStr);
+// console.log(encodedStr);
+
+
+
+
+
+// var dummydata = { # Get `gender` meta data
+// url = "https://idealgeo.com/api/v1/data/insights/gender"
+// headers = {
+//     "accept": "application/json",
+//     "api_key": API_KEY
+// }
+
+// params = {
+//     "version": "v2",
+// }
+
+// r = requests.get(url=url, params=params, headers=headers)
+// r.json()}
+
+// var data = {
+//     "version": "v2",
+//     "slug": "residential-population",
+//     "periods": [
+//         "YR2030Q1",
+//         "YR2025Q1",
+//         "YR2020Q1",
+//         "YR2019Q4",
+//         "YR2019Q3",
+//         "YR2019Q2",
+//         "YR2019Q1",
+//         "YR2018Q4",
+//         "YR2018Q3",
+//         "YR2018Q2",
+//         "YR2018Q1",
+//         "YR2010Q1",
+//         "YR2000Q1",
+//         "YR1990Q1"
+//     ],
+//     "parameters": {},
+//     "name": "Residential Population",
+//     "id": "residential-population",
+//     "groups": [
+//         "value"
+//     ],
+//     "description": "Historical, current and forecasted number of people living in houses and apartments within a trade area."
+// };
 
 function dealWithData(jsonResponse) {
     for (var i = 0; i <jsonResponse.data.length; i++) {
@@ -18,10 +67,6 @@ function dealWithData(jsonResponse) {
         
     } 
 }
-
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
 
 
 
@@ -51,10 +96,10 @@ $(document).ready(function () {
     function success(pos) {
         var crd = pos.coords;
         //if user provides geolocation: 
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
+        // console.log('Your current position is:');
+        // console.log(`Latitude : ${crd.latitude}`);
+        // console.log(`Longitude: ${crd.longitude}`);
+        // console.log(`More or less ${crd.accuracy} meters.`);
         $.ajax({
             url: "https://api.openweathermap.org/data/2.5/weather?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=imperial&appid=" + weatherKey,
             method: "GET"
@@ -83,7 +128,37 @@ $(document).ready(function () {
             var flowersIcon = "wi wi-owm-" + iconCode;
             $("#currentIcon").attr('class', flowersIcon);
 
-            //for UV index, you must pull lat and lon from response above and do another ajax function
+
+            //Zipcode geodata function start
+            var data = {"units":"minutes",
+            "type":"buffer",
+            "radius":"5"
+            ,"longitude":crd.longitude,
+            "latitude": crd.latitude,
+            "areatype":"drivetime"}
+            // Plugs in the encode data function into the url to allow it to convert zipcode into lat long and plug it into url encoding accordingly.
+            var stringifyData = JSON.stringify(data)
+            console.log(stringifyData) 
+            console.log(encodeURI(stringifyData))
+            var encodedData = encodeURIComponent(stringifyData)
+            const settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights/household-income/query?location="+encodedData+"&version=v2",
+                "method": "GET",
+                "headers": {
+                    // CHANGE OUT KEYS HERE ONCE ALL QUOTA USED UP!!!!!!!!!
+                    "x-rapidapi-key": "9430d5a1famsh310e1f06a7f7dc3p169296jsn84179abe104e",
+                    "x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
+                      }
+            };
+           
+// SHOULD be able to plug in data into the html? hopefully. ran out of quota uses.
+            $.ajax(settings).done(function (response) {
+                console.log(response); 
+                var metrics = $("#metrics")
+                metrics.html(`<div>${JSON.stringify(response)}</div>`)
+            });
            
         });
     }
