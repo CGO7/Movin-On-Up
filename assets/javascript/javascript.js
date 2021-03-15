@@ -122,35 +122,35 @@ $(document).ready(function () {
             $("#currentIcon").attr('class', flowersIcon);
 
 
-            //Zipcode geodata function start
-            var data = {"units":"minutes",
-            "type":"buffer",
-            "radius":"5",
-            "longitude":crd.longitude,
-            "latitude": crd.latitude,
-            "areatype":"drivetime"}
-            // Plugs in the encode data function into the url to allow it to convert zipcode into lat long and plug it into url encoding accordingly.
-            var stringifyData = JSON.stringify(data)
-            console.log(stringifyData) 
-            console.log(encodeURI(stringifyData))
-            var encodedData = encodeURIComponent(stringifyData)
-            const settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights/household-income/query?location="+encodedData+"&version=v2",
-                "method": "GET",
-                "headers": {
-                    // CHANGE OUT KEYS HERE ONCE ALL QUOTA USED UP!!!!!!!!!
-                    "x-rapidapi-key": "cc3bdfe5d0mshc16b581a0701a7ep103683jsn6aabd3b9dcb2",
-                    "x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
-                      }
-            };
+            // //Zipcode geodata function start
+            // var data = {"units":"minutes",
+            // "type":"buffer",
+            // "radius":"5",
+            // "longitude":crd.longitude,
+            // "latitude": crd.latitude,
+            // "areatype":"drivetime"}
+            // // Plugs in the encode data function into the url to allow it to convert zipcode into lat long and plug it into url encoding accordingly.
+            // var stringifyData = JSON.stringify(data)
+            // console.log(stringifyData) 
+            // console.log(encodeURI(stringifyData))
+            // var encodedData = encodeURIComponent(stringifyData)
+            // const settings = {
+            //     "async": true,
+            //     "crossDomain": true,
+            //     "url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights/household-income/query?location="+encodedData+"&version=v2",
+            //     "method": "GET",
+            //     "headers": {
+            //         // CHANGE OUT KEYS HERE ONCE ALL QUOTA USED UP!!!!!!!!!
+            //         "x-rapidapi-key": "cc3bdfe5d0mshc16b581a0701a7ep103683jsn6aabd3b9dcb2",
+            //         "x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
+            //           }
+            // };
            
 // SHOULD be able to plug in data into the html? hopefully. ran out of quota uses.
 
            searchButton.click(function () {
                //Zipcode geodata function start
-               var zipcode = $("#zipInput").val()
+                var zipcode = $("#zipInput").val()
                var data = {
                 type:"region",
                 regiontype: "zipcode",
@@ -161,6 +161,8 @@ $(document).ready(function () {
             console.log(stringifyData) 
             console.log(encodeURI(stringifyData))
             var encodedData = encodeURIComponent(stringifyData)
+            var metrics = $("#metrics")
+            metrics.html(`<p>${JSON.stringify(data)}</p>`)
             const settings = {
                 "async": true,
                 "crossDomain": true,
@@ -174,21 +176,21 @@ $(document).ready(function () {
             };
              $.ajax(settings).done(function (response1) {
                 console.log(response1); 
-                var zipcode = $("#zipInput").val()
-                console.log(zipcode);
-                callback();
-                var regionObj = {
-                    type:"region",
-                    regiontype: "zipcode",
-                    region_id: zipcode
-                    };
-                var locStr = JSON.stringify(regionObj);
-                var encodedStr = encodeURIComponent(locStr);
-                console.log(locStr);
-                console.log(encodedStr);
             });
-                var metrics = $("#metrics")
-                metrics.html(`<p>${JSON.stringify(response1)}</p>`)
+                // var zipcode = $("#zipInput").val()
+                // console.log(zipcode);
+                // callback();
+                // var regionObj = {
+                //     type:"region",
+                //     regiontype: "zipcode",
+                //     region_id: zipcode
+                //     };
+                // var locStr = JSON.stringify(regionObj);
+                // var encodedStr = encodeURIComponent(locStr);
+                // console.log(locStr);
+                // console.log(encodedStr);
+            
+               
             });
 
         //    .then(searchButton.click(function () {
