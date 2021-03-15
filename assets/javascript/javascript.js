@@ -67,7 +67,7 @@ var weatherKey = 'd9370cf81c44dc3900380fcc44da127d';
 
 $(document).ready(function () {
     //add var names here
-    var searchButton1 = $("#searchBtn1")
+    // var searchButton1 = $("#searchBtn1")
     var searchButton = $("#searchBtn");
     var usCity = $("#cityInput");
     var austinEl = $("#austin");
@@ -147,11 +147,64 @@ $(document).ready(function () {
             };
            
 // SHOULD be able to plug in data into the html? hopefully. ran out of quota uses.
-            $.ajax(settings).done(function (response) {
+
+           searchButton.click(function () {
+               //Zipcode geodata function start
+            var data = {"units":"minutes",
+            "type":"buffer",
+            "radius":"5",
+            "longitude":crd.longitude,
+            "latitude": crd.latitude,
+            "areatype":"drivetime"}
+            // Plugs in the encode data function into the url to allow it to convert zipcode into lat long and plug it into url encoding accordingly.
+            var stringifyData = JSON.stringify(data)
+            console.log(stringifyData) 
+            console.log(encodeURI(stringifyData))
+            var encodedData = encodeURIComponent(stringifyData)
+            const settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights/household-income/query?location="+encodedData+"&version=v2",
+                "method": "GET",
+                "headers": {
+                    // CHANGE OUT KEYS HERE ONCE ALL QUOTA USED UP!!!!!!!!!
+                    "x-rapidapi-key": "cc3bdfe5d0mshc16b581a0701a7ep103683jsn6aabd3b9dcb2",
+                    "x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
+                      }
+            };
+             $.ajax(settings).done(function (response) {
                 console.log(response); 
-                var metrics = $("#metrics")
-                metrics.html(`<div>${JSON.stringify(response)}</div>`)
+                var zipcode = $("#zipInput").val()
+                console.log(zipcode);
+                callback();
+                var regionObj = {
+                    type:"region",
+                    regiontype: "zipcode",
+                    region_id: zipcode
+                    };
+                var locStr = JSON.stringify(regionObj);
+                var encodedStr = encodeURIComponent(locStr);
+                console.log(locStr);
+                console.log(encodedStr);
             });
+                var metrics = $("#metrics")
+                metrics.html(`<p>${JSON.stringify(response)}</p>`)
+            });
+
+        //    .then(searchButton.click(function () {
+        //         var zipcode = $("#zipInput").val()
+        //         console.log(zipcode);
+        //         callback();
+        //         var regionObj = {
+        //             type:"region",
+        //             regiontype: "zipcode",
+        //             region_id: zipcode
+        //             };
+        //         var locStr = JSON.stringify(regionObj);
+        //         var encodedStr = encodeURIComponent(locStr);
+        //         console.log(locStr);
+        //         console.log(encodedStr);
+        //     });
            
         });
     }
@@ -262,7 +315,7 @@ $(document).ready(function () {
         //adds random image from Unsplash
         // $("#randoImg").attr("src", "https://source.unsplash.com/featured/?" + usCity.val() + ",city");
     }
-
+// TAKES USER INPUT FOR ZIPCODE AND APPLIES IT
     searchButton.click(function () {
         var zipcode = $("#zipInput").val()
         console.log(zipcode);
