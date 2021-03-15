@@ -136,7 +136,7 @@ $(document).ready(function () {
             ,"longitude":crd.longitude,
             "latitude": crd.latitude,
             "areatype":"drivetime"}
-            
+            // Plugs in the encode data function into the url to allow it to convert zipcode into lat long and plug it into url encoding accordingly.
             var stringifyData = JSON.stringify(data)
             console.log(stringifyData) 
             console.log(encodeURI(stringifyData))
@@ -152,7 +152,7 @@ $(document).ready(function () {
                       }
             };
            
-
+// SHOULD be able to plug in data into the html? hopefully. ran out of quota uses.
             $.ajax(settings).done(function (response) {
                 console.log(response); 
                 var metrics = $("#metrics")
