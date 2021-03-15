@@ -161,8 +161,8 @@ $(document).ready(function () {
             console.log(stringifyData) 
             console.log(encodeURI(stringifyData))
             var encodedData = encodeURIComponent(stringifyData)
-            var metrics = $("#metrics")
-            metrics.html(`<p>${JSON.stringify(data)}</p>`)
+            // var metrics = $("#metrics")
+            // metrics.html(`<p>${JSON.stringify(data)}</p>`)
             const settings = {
                 "async": true,
                 "crossDomain": true,
@@ -175,7 +175,20 @@ $(document).ready(function () {
                       }
             };
              $.ajax(settings).done(function (response1) {
+                console.log(zipcode);
+                callback();
+                // var regionObj = {
+                //     type:"region",
+                //     regiontype: "zipcode",
+                //     region_id: zipcode
+                //     };
+                // var locStr = JSON.stringify(regionObj);
+                // var encodedStr = encodeURIComponent(locStr);
+                // console.log(locStr);
+                // console.log(encodedStr);
                 console.log(response1); 
+                var metrics = $("#metrics")
+            metrics.html(`<p>${JSON.stringify(response1.data[0].data[1])}</p>`)
             });
                 // var zipcode = $("#zipInput").val()
                 // console.log(zipcode);
