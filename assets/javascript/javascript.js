@@ -147,6 +147,7 @@ $(document).ready(function () {
                 "url": "https://idealspot-geodata.p.rapidapi.com/api/v1/data/insights/household-income/query?location="+encodedData+"&version=v2",
                 "method": "GET",
                 "headers": {
+                    // CHANGE OUT KEYS HERE ONCE ALL QUOTA USED UP!!!!!!!!!
                     "x-rapidapi-key": "9430d5a1famsh310e1f06a7f7dc3p169296jsn84179abe104e",
                     "x-rapidapi-host": "idealspot-geodata.p.rapidapi.com"
                       }
